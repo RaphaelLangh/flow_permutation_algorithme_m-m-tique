@@ -2,9 +2,9 @@ package flow_permutation_algorithme_memetique;
 
 public class Solution {
 	
-	private Flowshop instance ; // ref�rence � l'instance 
+	private Flowshop instance ; // reference a l'instance 
 	private int[] ordredesjobs ; // donne l'ordre des jobs
-	private int dureetotal ; // donne la dur�e totale suivant l'ordre ordredesjobs 
+	private int dureetot ; // donne la duree totale suivant l'ordre ordredesjobs
 	
 	
 	public Flowshop getInstance() {
@@ -20,7 +20,7 @@ public class Solution {
 		this.ordredesjobs = ordredesjobs;
 	}
 	public int getDureetotal() {
-		return dureetotal;
+		return getDureetotal();
 	}
 	
 	
