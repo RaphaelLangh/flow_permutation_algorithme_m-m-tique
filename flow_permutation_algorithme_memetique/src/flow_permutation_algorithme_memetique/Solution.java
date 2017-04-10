@@ -1,9 +1,9 @@
 package flow_permutation_algorithme_memetique;
 
 public class Solution {
-	//coucou
-	private int[] lasoluce ;  
-	private int clovis = 100000;
-
-	private int test;
+	
+	private Flowshop instance ; // reférence à l'instance 
+	private int[] ordredesjobs ; // donne l'ordre des jobs
+	private int dureetotal ; // donne la durée totale suivant l'ordre ordredesjobs 
+	
 }
