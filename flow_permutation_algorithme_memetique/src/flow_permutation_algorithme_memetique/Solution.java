@@ -20,7 +20,7 @@ public class Solution {
 		this.ordredesjobs = ordredesjobs;
 	}
 	public int getDureetotal() {
-		return getDureetotal();
+		return dureetot;
 	}
 	
 	
