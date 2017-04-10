@@ -1,6 +1,7 @@
 package flow_permutation_algorithme_memetique;
 /*
 * Nom de classe : Flowshop
+
 *
 * Description :
 *
@@ -102,16 +103,16 @@ public class Flowshop {
     
   /*  public ListeJobs creerListeNEH() { // renvoie une liste selon l'ordre NEH
     	ListeJobs tri=this.creerListeJobs();
-    	tri.trierDureesDecroissantes(); //on crée la liste qui sera triée selon l'ordre NEH
+    	tri.trierDureesDecroissantes(); //on crï¿½e la liste qui sera triï¿½e selon l'ordre NEH
     	ListeJobs respartiel=new ListeJobs();
-    	ListeJobs test=new ListeJobs(); //on crée une liste qui correspondra à l'ajout du job suivant à différentes positions
+    	ListeJobs test=new ListeJobs(); //on crï¿½e une liste qui correspondra ï¿½ l'ajout du job suivant ï¿½ diffï¿½rentes positions
     	
     	for(int i=0;i<tri.nombreJobs();i++){
-    		int durmax=Integer.MAX_VALUE;//on cherche à minimiser la durée, on prend donc un max pour commencer
+    		int durmax=Integer.MAX_VALUE;//on cherche ï¿½ minimiser la durï¿½e, on prend donc un max pour commencer
     		int nb=respartiel.nombreJobs();
     		test=respartiel.clone();
     		for (int j=0;j<=nb;j++){
-    			test.ajouterJob(tri.getJob(i), j); //on ajoute à l'ordonnancement partiel un job qui aura une place précise pour chaque passage dans la boucle for
+    			test.ajouterJob(tri.getJob(i), j); //on ajoute ï¿½ l'ordonnancement partiel un job qui aura une place prï¿½cise pour chaque passage dans la boucle for
     				
     			Ordonnancement testeur=new Ordonnancement(test,this.getNbMachines());
     				
@@ -119,7 +120,7 @@ public class Flowshop {
     				
     			if(testeur.getDuree()<durmax){
     				respartiel=test.clone();
-    				durmax=testeur.getDuree();//si on trouve une durée plus petite que celle gardée en mémoire, on la sauvegarde
+    				durmax=testeur.getDuree();//si on trouve une durï¿½e plus petite que celle gardï¿½e en mï¿½moire, on la sauvegarde
     			}
     			test.supprimerJob(j);
     		}
@@ -135,10 +136,10 @@ public class Flowshop {
     
     // calcul de r_kj
     public int calculerDateDispo(int k, int j) {
-    	k--;j--;//cette ligne sert à repasser en indices java (au lieu des indices machine)
+    	k--;j--;//cette ligne sert ï¿½ repasser en indices java (au lieu des indices machine)
 		int res=0;
 		for(int i=0;i<k;i++){
-			res+=this.getJob(j).getDureeOperation(i);//on ajoute simplement toutes les opérations jusque k
+			res+=this.getJob(j).getDureeOperation(i);//on ajoute simplement toutes les opï¿½rations jusque k
 		}
 		return res;
 		
@@ -149,7 +150,7 @@ public class Flowshop {
     	k--;j--;
 		int res=0;
 		for(int i=k+1;i<this.getNbMachines();i++){
-			res+=this.getJob(j).getDureeOperation(i);//on ajoute simplement les durées des opérations après k
+			res+=this.getJob(j).getDureeOperation(i);//on ajoute simplement les durï¿½es des opï¿½rations aprï¿½s k
 		}
 		return res;
     }
@@ -168,7 +169,7 @@ public class Flowshop {
 		int res=0;
 		for (int k=1;k<=this.getNbMachines();k++){
 			
-			int res1=Integer.MAX_VALUE;//res1 correspondra à la date dispo
+			int res1=Integer.MAX_VALUE;//res1 correspondra ï¿½ la date dispo
 			
 			for(int i=1;i<=this.getNbJobs();i++){
 				if(res1>this.calculerDateDispo(k, i)){
@@ -176,7 +177,7 @@ public class Flowshop {
 				}
 			}
 			
-			int res2=Integer.MAX_VALUE;//res2 correspondra à la durée de latence
+			int res2=Integer.MAX_VALUE;//res2 correspondra ï¿½ la durï¿½e de latence
 			
 			for(int i=1;i<=this.getNbJobs();i++){
 				if(res2>this.calculerDureeLatence(k, i)){
@@ -187,7 +188,7 @@ public class Flowshop {
 			int res3=this.calculerDureeJobs(k);
 			
 			if(res1+res2+res3>res){
-				res=res1+res2+res3;//on somme les 3 pour obtenir la borne inférieure
+				res=res1+res2+res3;//on somme les 3 pour obtenir la borne infï¿½rieure
 			}
 		}
 		return res;
@@ -201,11 +202,11 @@ public class Flowshop {
 /*    public int calculerDateDispo(Ordonnancement o, int k, int j) {
     	k--;j--;
 		int res=0;
-		res+=o.getDateDisponibilite(0);//on part de la disponibilité de la première machine après l'ordonnancement o
+		res+=o.getDateDisponibilite(0);//on part de la disponibilitï¿½ de la premiï¿½re machine aprï¿½s l'ordonnancement o
 		for(int i=0;i<k;i++){
 			res+=this.getJob(j).getDureeOperation(i);//on ajoute de quoi obtenir le nouveau r_kj
 		}
-		return Math.max(res,o.getDateDisponibilite(k));//si le résultat trouvé est plus court que ce qu'il y avait avec l'ordonnancement de départ, on garde logiquement le résultat précédent
+		return Math.max(res,o.getDateDisponibilite(k));//si le rï¿½sultat trouvï¿½ est plus court que ce qu'il y avait avec l'ordonnancement de dï¿½part, on garde logiquement le rï¿½sultat prï¿½cï¿½dent
 	}
     
     // calcul de la somme des durÃ©es des opÃ©rations d'une liste
@@ -213,7 +214,7 @@ public class Flowshop {
     public int calculerDureeJobs(int k, ListeJobs l) {
 		int res=0;
 		for(int i=0;i<l.nombreJobs();i++){
-			res+=l.getJob(i).getDureeOperation(k);//on ajoute simplement les durées des opérations restantes
+			res+=l.getJob(i).getDureeOperation(k);//on ajoute simplement les durï¿½es des opï¿½rations restantes
 		}
 		return res;
     }
