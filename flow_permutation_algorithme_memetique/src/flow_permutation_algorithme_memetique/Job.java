@@ -1,15 +1,4 @@
 package flow_permutation_algorithme_memetique;
-/*
-* Nom de classe : Job
-*
-* Description :
-*
-* Version : 1.0
-*
-* Date : 21/09/2010
-*
-* Auteur : Chams LAHLOU
-*/
 
 
 public class Job implements java.lang.Comparable<Job>, Cloneable {
