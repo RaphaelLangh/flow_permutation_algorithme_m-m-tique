@@ -42,6 +42,28 @@ public class Population {
 	public void add(Solution s){
 		this.pop.add(s) ;
 	}
+	public void remove(Solution s){
+		this.pop.remove(s) ;
+	}
+	public void remove (int i){
+		this.pop.remove(i);
+	}
+	public int size(){
+		return this.getPop().size() ;
+	}
+	
+	public void injectionnvsolutionramdom(Solution[] solutions){
+		int n = solutions.length ;
+		int tirage ;
+		for(int i = 0 ; i < n ; i++){
+			Random rand = new Random();
+			tirage = rand.nextInt(this.size());
+			this.remove(tirage);
+		}
+		for(int i = 0 ; i < n ; i++){
+			this.add(solutions[i]);
+		}
+	}
 	
 	
 	
