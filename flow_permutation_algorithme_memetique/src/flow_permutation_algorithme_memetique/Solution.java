@@ -54,13 +54,23 @@ public class Solution {
 
 	public void rechercheLocale(){
 		int[] jobs = this.getOrdredesjobs();
+		int [] bestJobs = jobs;
 		int duree = this.getDureetotal();
 		for (int i = 0; i < jobs.length - 1; i++) {
 			int[] a = jobs;
 			a[i+1] = jobs[i];
 			a[i] = jobs[i+1];
-			//Flowshop f = new Flowshop(a,this.instance.getNbJobs())
+			/*
+			 *  Solution s = new Solution(a);
+			 *  int mini = s.getDureetotal;
+			 *  if (mini < duree) {
+			 *  duree = mini;
+			 *  bestJobs = a;
+			 *  }
+			 */
 		}
+		setOrdredesjobs(bestJobs);
+		//setDureetotal(duree);
 	}
 
 }
