@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Solution {
-	
+
 	private Flowshop instance ; // reference a l'instance 
 	private int[] ordredesjobs ; // donne l'ordre des jobs
 	private int dureetot ; // donne la duree totale suivant l'ordre ordredesjobs
-	
-	
+
+
 	// creer une solution aleatoirement 
 	public Solution(Flowshop instance){
 		this.instance = instance ;
 		this.ordredesjobs = new int[this.instance.getNbJobs()];
-		
+
 		ArrayList<Integer> hasard = new ArrayList<Integer>() ;
 		for (int i = 0 ; i < instance.getNbJobs() ; i++){
 			hasard.add(i) ; 
@@ -27,10 +27,10 @@ public class Solution {
 			hasard.remove(tirage);
 		}
 		this.setDureetotal();
-				
+
 	}
-	
-	
+
+
 	public Flowshop getInstance() {
 		return instance;
 	}
@@ -46,10 +46,21 @@ public class Solution {
 	public int getDureetotal() {
 		return dureetot;
 	}
-	
-	
+
+
 	public void setDureetotal() {
 		// a completer
 	}
-	
+
+	public void rechercheLocale(){
+		int[] jobs = this.getOrdredesjobs();
+		int duree = this.getDureetotal();
+		for (int i = 0; i < jobs.length - 1; i++) {
+			int[] a = jobs;
+			a[i+1] = jobs[i];
+			a[i] = jobs[i+1];
+			//Flowshop f = new Flowshop(a,this.instance.getNbJobs())
+		}
+	}
+
 }
