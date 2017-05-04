@@ -58,6 +58,15 @@ public class Solution {
 	public int getDureetotal() {
 		return dureetot;
 	}
+	
+	public String toString(){
+		String s = "[" ;
+		for(int i = 0 ; i < this.getInstance().getNbJobs(); i++ ){
+			s = s + this.ordredesjobs[i] + ", " ;
+		}
+		s = s + "]" ;
+		return s ;
+	}
 
 
 	public void setDureetotal() {
