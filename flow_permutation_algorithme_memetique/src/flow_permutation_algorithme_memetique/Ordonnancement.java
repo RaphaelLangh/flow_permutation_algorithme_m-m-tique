@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2017 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package flow_permutation_algorithme_memetique;
 
 
@@ -79,7 +89,7 @@ public class Ordonnancement implements Cloneable{
 		this.dateDisponibilite = dateDisponibilite;
 	}
 
-	public void update(){ // met à jour la durée et les dates de disponibilités pour la séquence donnée
+	public void update(){ // met ï¿½ jour la durï¿½e et les dates de disponibilitï¿½s pour la sï¿½quence donnï¿½e
 		this.initialiser();
 		Iterator<Job> it = this.getSequence().iterator();
 		while(it.hasNext()){
@@ -121,7 +131,7 @@ public class Ordonnancement implements Cloneable{
 		sequence.ajouterJob(j);
 	}
 	
-	public void ajoutjobavecmodif(Job j){ // ajout un job en mettant à jour les dates de disponibilités et le duréee 
+	public void ajoutjobavecmodif(Job j){ // ajout un job en mettant ï¿½ jour les dates de disponibilitï¿½s et le durï¿½ee 
 		j.setDateDebut(0, this.getDateDisponibilite(0));
 		this.dateDisponibilite[0] = this.getDateDisponibilite(0) + j.getDureeOperation(0);
 		for(int i = 1; i<this.nbMachines; i++){

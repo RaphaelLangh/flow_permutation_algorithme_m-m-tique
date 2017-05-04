@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2017 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package flow_permutation_algorithme_memetique;
 
 
@@ -114,7 +124,7 @@ public class Job implements java.lang.Comparable<Job>, Cloneable {
 		
     	int res=0;
     	for(int i=0;i<this.nbOperations;i++){
-    		res+=this.dureesOperations[i]; //on additionne toutes les durées d'opération du job
+    		res+=this.dureesOperations[i]; //on additionne toutes les durï¿½es d'opï¿½ration du job
     	}
     	this.duree=res;
     }

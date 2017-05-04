@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2017 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package flow_permutation_algorithme_memetique;
 
 import java.util.ArrayList;
@@ -103,9 +113,33 @@ public class Solution {
 		this.dureetot = minduree;
 		this.ordredesjobs = bestJobs;
 	}
-	/*
-	public Solution croisement(Solution s) {
-		
+	
+	public boolean notInclude ( int ajout, int[] tab) {
+		boolean b = true;
+		for ( int i : tab) {
+			if ( i == ajout) {
+				b = false;
+			}
+		}
+		return b;
 	}
-	*/
+	
+	public Solution croisement(Solution s) {
+		int n = this.ordredesjobs.length;
+		int[] a = new int[n];
+		int moit = n/2;
+		for (int i = 0; i < moit; i++) {
+			a[i] = this.ordredesjobs[i];
+		}
+		for (int i = 0; i < n; i++) {
+			int ajout = s.ordredesjobs[i];
+			if ( notInclude(ajout, a)) {
+				a[moit] = ajout;
+				moit++;
+			}
+		}
+		Solution r = new Solution (this.instance,a);
+		return r;
+	}
+	
 }
