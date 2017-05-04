@@ -58,16 +58,6 @@ public class Solution {
 	public int getDureetotal() {
 		return dureetot;
 	}
-	
-	// pour l'affichage
-	public String toString(){
-		String s = "[" ;
-		for(int i = 0 ; i < this.getInstance().getNbJobs(); i++ ){
-			s = s + this.ordredesjobs[i] + ", " ;
-		}
-		s = s + "]" ;
-		return s ;
-	}
 
 
 	public void setDureetotal() {
@@ -104,5 +94,9 @@ public class Solution {
 		this.dureetot = minduree;
 		this.ordredesjobs = bestJobs;
 	}
-	
+	/*
+	public Solution croisement(Solution s) {
+		
+	}
+	*/
 }
