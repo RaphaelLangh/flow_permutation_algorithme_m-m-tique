@@ -9,7 +9,7 @@ public class Solution {
 	private int[] ordredesjobs ; // donne l'ordre des jobs
 	private int dureetot ; // donne la duree totale suivant l'ordre ordredesjobs
 	
-	// créer une solution à partir d'un tableau des jobs 
+	// crï¿½er une solution ï¿½ partir d'un tableau des jobs 
 		public Solution(Flowshop instance,int[] ordredesjobs){
 			this.instance = instance ;
 			this.ordredesjobs = ordredesjobs ;
@@ -37,7 +37,7 @@ public class Solution {
 
 	}
 	
-	// renvoit le job numéro i de ordredesjobs
+	// renvoit le job numï¿½ro i de ordredesjobs
 		public Job getJob(int i){
 			return this.getInstance().getJob(this.ordredesjobs[i]);
 		}
@@ -85,30 +85,6 @@ public class Solution {
 
 	public void rechercheLocale(){
 		int[] jobs = this.getOrdredesjobs().clone();
-		int [] bestJobs = jobs;
-		for ( int i = 0; i < jobs.length; i++) {
-			int duree = this.getDureetotal();
-			int[] a = new int[jobs.length];
-			a[0] = jobs[jobs.length];
-			for (int j = 0; j < jobs.length - 1; j++) {
-				a[j+1] = jobs[j];
-			}
-			jobs = a.clone();
-			/*
-			 *  Solution s = new Solution(a);
-			 *  int mini = s.getDureetotal;
-			 *  if (mini < duree) {
-			 *  duree = mini;
-			 *  bestJobs = a;
-			 *  }
-			 */
-		}
-		setOrdredesjobs(bestJobs);
-		//setDureetotal(duree);
-	}
-
-	public void rechercheLocale1(){
-		int[] jobs = this.getOrdredesjobs().clone();
 		int [] bestJobs = jobs.clone();
 		int minduree = this.getDureetotal();
 		for ( int i = 1; i < jobs.length; i++) {
@@ -117,13 +93,15 @@ public class Solution {
 			for (int j = 0; j < i-1; j++) {
 				a[j+1] = jobs[i];
 			}
-			/*Solution s = new Solution(a);
+			Solution s = new Solution(this.instance,a);
 			int duree = s.getDureetotal();
 			if (duree < minduree) {
 				bestJobs = a;
 				minduree = duree;
 			}
-			*/
 		}
+		this.dureetot = minduree;
+		this.ordredesjobs = bestJobs;
 	}
+	
 }
