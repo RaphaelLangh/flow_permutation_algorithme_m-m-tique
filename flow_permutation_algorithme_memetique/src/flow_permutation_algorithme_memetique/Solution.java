@@ -29,7 +29,12 @@ public class Solution {
 		for (int i = 0 ; i < instance.getNbJobs() ; i++){
 			Random rand = new Random();
 			int tirage = rand.nextInt(instance.getNbJobs());
-			tirage = tirage%(hasard.size()-1) ;
+			if(hasard.size()==1){
+				tirage = 0 ;
+			}
+			else{
+				tirage = tirage%(hasard.size()) ;
+			}
 			this.getOrdredesjobs()[i] = hasard.get(tirage);
 			hasard.remove(tirage);
 		}

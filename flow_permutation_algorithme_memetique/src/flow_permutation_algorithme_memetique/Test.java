@@ -2,6 +2,9 @@ package flow_permutation_algorithme_memetique;
 
 public class Test {
 	
+	
+	public static void main(String[] args) {
+	
 	Job j1 = new Job(1,new int[]{2,8,4,7}) ;
 	Job j2 = new Job(2,new int[]{3,9,1,3}) ;
 	Job j3 = new Job(3,new int[]{6,8,3,4}) ;
@@ -11,6 +14,18 @@ public class Test {
 	
 	Flowshop instancetest = new Flowshop(new Job[]{j1,j2,j3,j4,j5,j6},4) ;
 	
+	Solution s1 = new Solution(instancetest);
+	Solution s2 = new Solution(instancetest);
+	Solution s3 = new Solution(instancetest);
+	Solution s4 = new Solution(instancetest);
+	Solution s5 = new Solution(instancetest);
 	
+	System.out.println(s1.toString());
+	System.out.println(s2.toString());
+	System.out.println(s3.toString());
+	System.out.println(s4.toString());
+	System.out.println(s5.toString());
+	
+	}
 
 }
