@@ -25,27 +25,33 @@ public class Solution {
 			this.ordredesjobs = ordredesjobs ;
 			this.setDureetotal();
 		}
+		
+		// creer une solution aleatoirement 
+		public Solution(Flowshop instance){
+			this.instance = instance ;
+			this.ordredesjobs = new int[this.instance.getNbJobs()];
 
+			ArrayList<Integer> hasard = new ArrayList<Integer>() ;
+			for (int i = 0 ; i < instance.getNbJobs() ; i++){
+				hasard.add(i) ; 
+			}
+			for (int i = 0 ; i < instance.getNbJobs() ; i++){
+				Random rand = new Random();
+				int tirage = rand.nextInt(instance.getNbJobs());
+				if(hasard.size()==1){
+					tirage = 0 ;
+				}
+				else{
+					tirage = tirage%(hasard.size()) ;
+				}
+				this.getOrdredesjobs()[i] = hasard.get(tirage);
+				hasard.remove(tirage);
+			}
+			this.setDureetotal();
 
-	// creer une solution aleatoirement 
-	public Solution(Flowshop instance){
-		this.instance = instance ;
-		this.ordredesjobs = new int[this.instance.getNbJobs()];
-
-		ArrayList<Integer> hasard = new ArrayList<Integer>() ;
-		for (int i = 0 ; i < instance.getNbJobs() ; i++){
-			hasard.add(i) ; 
 		}
-		for (int i = 0 ; i < instance.getNbJobs() ; i++){
-			Random rand = new Random();
-			int tirage = rand.nextInt(instance.getNbJobs());
-			tirage = tirage%(hasard.size()-1) ;
-			this.getOrdredesjobs()[i] = hasard.get(tirage);
-			hasard.remove(tirage);
-		}
-		this.setDureetotal();
 
-	}
+
 	
 	// renvoit le job num�ro i de ordredesjobs
 		public Job getJob(int i){
