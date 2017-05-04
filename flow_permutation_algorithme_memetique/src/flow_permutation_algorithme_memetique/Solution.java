@@ -69,7 +69,7 @@ public class Solution {
 		int[] datedispo = new int[nbmachine];
 		
 		for(int i = 0 ; i < nbjobs ; i++ ){
-			for(int j = 0 ; j < nbjobs ; j++ ){
+			for(int j = 0 ; j < nbmachine ; j++ ){
 				if(0<j){
 					datedispo[j] = Math.max(datedispo[j-1],datedispo[j]) + this.getJob(i).getDureeOperation(j); ;
 				}
