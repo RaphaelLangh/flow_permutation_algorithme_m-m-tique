@@ -8,6 +8,13 @@ public class Solution {
 	private Flowshop instance ; // reference a l'instance 
 	private int[] ordredesjobs ; // donne l'ordre des jobs
 	private int dureetot ; // donne la duree totale suivant l'ordre ordredesjobs
+	
+	// créer une solution à partir d'un tableau des jobs 
+		public Solution(Flowshop instance,int[] ordredesjobs){
+			this.instance = instance ;
+			this.ordredesjobs = ordredesjobs ;
+			this.setDureetotal();
+		}
 
 
 	// creer une solution aleatoirement 
@@ -29,6 +36,11 @@ public class Solution {
 		this.setDureetotal();
 
 	}
+	
+	// renvoit le job numéro i de ordredesjobs
+		public Job getJob(int i){
+			return this.getInstance().getJob(this.ordredesjobs[i]);
+		}
 
 
 	public Flowshop getInstance() {
@@ -49,7 +61,17 @@ public class Solution {
 
 
 	public void setDureetotal() {
-		// a completer
+		int nbmachine = this.getInstance().getNbMachines();
+		int nbjobs = this.getInstance().getNbJobs();
+		int[] datedispo = new int[nbmachine];
+		
+		for(int i = 0 ; i < nbjobs ; i++ ){
+			datedispo[0] = datedispo[0] + this.getJob(i).getDureeOperation(0) ;
+			for(int j = 1 ; j < nbmachine ; j++ ){
+				datedispo[j] = Math.max(datedispo[j-1],datedispo[j]) + this.getJob(i).getDureeOperation(j);
+			}
+		}
+		this.dureetot = datedispo[nbmachine-1] ;
 	}
 
 	public void rechercheLocale(){
