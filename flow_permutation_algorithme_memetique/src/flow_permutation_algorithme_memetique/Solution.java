@@ -51,6 +51,16 @@ public class Solution {
 
 		}
 
+		//constructeur par copie profonde
+		public Solution(Solution s){
+			this.instance=s.instance;
+			this.ordredesjobs = new int[this.instance.getNbJobs()];
+			
+			for(int i=0;i<this.ordredesjobs.length;i++){
+				this.ordredesjobs[i]=s.getOrdredesjobs()[i];
+			}
+			this.setDureetotal();
+		}
 
 	
 	// renvoit le job numï¿½ro i de ordredesjobs
@@ -146,6 +156,25 @@ public class Solution {
 		}
 		Solution r = new Solution (this.instance,a);
 		return r;
+	}
+	
+	
+	//introduit une mutation en échangeant 2 jobs pris au hasard
+	public void mutation(){
+		Solution precedent=new Solution(this);
+		Random rand1 = new Random();
+		int rd1 = rand1.nextInt(instance.getNbJobs());
+		Random rand2 = new Random();
+		int rd2 = rand2.nextInt(instance.getNbJobs());
+		if(rd1==rd2&&rd1!=instance.getNbJobs()){
+			rd2+=1;
+		}
+		else if(rd1==rd2&&rd1!=0){
+			rd2-=1;
+		}
+		this.ordredesjobs[rd1]=this.ordredesjobs[rd2];
+		this.ordredesjobs[rd2]=precedent.ordredesjobs[rd1];
+		this.setDureetotal();
 	}
 	
 }

@@ -42,6 +42,9 @@ public class Test {
 	Solution enfant=s1.croisement(s2);
 	System.out.println(enfant);
 	System.out.println(enfant.getDureetotal());
+	enfant.mutation();
+	System.out.println(enfant);
+	System.out.println(enfant.getDureetotal());
 	
 	/*
 	System.out.println(s1.toString());
