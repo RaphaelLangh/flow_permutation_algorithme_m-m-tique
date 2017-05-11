@@ -39,10 +39,7 @@ public class Test {
 	s2.setDureetotal();
 	System.out.println(s2.toString());
 	System.out.println(s2.getDureetotal());
-	Solution enfant=s1.croisement(s2);
-	System.out.println(enfant);
-	System.out.println(enfant.getDureetotal());
-	enfant.mutation();
+	Solution enfant=s1.croisement2pts(1,s2);
 	System.out.println(enfant);
 	System.out.println(enfant.getDureetotal());
 	

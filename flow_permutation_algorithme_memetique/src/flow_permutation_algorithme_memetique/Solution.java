@@ -158,6 +158,47 @@ public class Solution {
 		return r;
 	}
 	
+	//croisement en conservant les k premiers jobs du 1er parent
+	public Solution croisement1pt(int k,Solution s) {
+		int n = this.ordredesjobs.length;
+		int[] a = new int[n];
+		for (int i = 0; i < k; i++) {
+			a[i] = this.ordredesjobs[i];
+		}
+		for (int i = 0; i < n; i++) {
+			int ajout = s.ordredesjobs[i];
+			if ( notInclude(ajout, a)) {
+				a[k] = ajout;
+				k++;
+			}
+		}
+		Solution r = new Solution (this.instance,a);
+		return r;
+	}
+	
+	//croisement en conservant les k premiers et les k derniers jobs du 1er parent
+		public Solution croisement2pts(int k,Solution s) {
+			int n = this.ordredesjobs.length;
+			int[] a = new int[n];
+			for(int i=0;i<a.length;i++){
+				a[i]=-1;
+			}
+			for (int i = 0; i < k; i++) {
+				a[i] = this.ordredesjobs[i];
+			}
+			for (int i = n-k; i < n; i++) {
+				a[i] = this.ordredesjobs[i];
+			}
+			for (int i = 0; i < n; i++) {
+				int ajout = s.ordredesjobs[i];
+				if ( notInclude(ajout, a)) {
+					a[k] = ajout;
+					k++;
+				}
+			}
+			Solution r = new Solution (this.instance,a);
+			return r;
+		}
 	
 	//introduit une mutation en échangeant 2 jobs pris au hasard
 	public void mutation(){
