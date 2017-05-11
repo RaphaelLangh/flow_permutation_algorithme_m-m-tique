@@ -33,7 +33,15 @@ public class Test {
 	s1.setDureetotal();
 	System.out.println(s1.toString());
 	System.out.println(s1.getDureetotal());
-	
+	s1.rechercheLocale();
+	System.out.println(s1.toString());
+	System.out.println(s1.getDureetotal());
+	s2.setDureetotal();
+	System.out.println(s2.toString());
+	System.out.println(s2.getDureetotal());
+	Solution enfant=s1.croisement(s2);
+	System.out.println(enfant);
+	System.out.println(enfant.getDureetotal());
 	
 	/*
 	System.out.println(s1.toString());

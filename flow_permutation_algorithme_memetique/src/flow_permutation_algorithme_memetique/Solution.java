@@ -106,8 +106,8 @@ public class Solution {
 		for ( int i = 1; i < jobs.length; i++) {
 			int[] a = jobs.clone();
 			a[0] = jobs[i];
-			for (int j = 0; j < i-1; j++) {
-				a[j+1] = jobs[i];
+			for (int j = 0; j < i; j++) {
+				a[j+1] = jobs[j];
 			}
 			Solution s = new Solution(this.instance,a);
 			int duree = s.getDureetotal();
