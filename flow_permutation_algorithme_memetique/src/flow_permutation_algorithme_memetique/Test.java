@@ -51,6 +51,17 @@ public class Test {
 	System.out.println(s5.toString());
 	*/
 	
+	Flowshop f = new Flowshop("data/tai11.txt");
+	Population p = new Population(15,f);
+	for ( Solution s : p.getPop()) {
+		s.rechercheLocale();
+	}
+	for (int i= 0; i<1000; i++) {
+		p.next();
+	}
+	System.out.println();
+	System.out.println(p);
+	
 	}
 
 }
