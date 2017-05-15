@@ -66,6 +66,45 @@ public class Population {
 		return this.getPop().size() ;
 	}
 	
+	public void recherchelocalepop(){
+		int n = this.pop.size();
+		for(int i=0;i<n;i++){
+			pop.get(i).rechercheLocale();
+		}
+	}
+	
+	public Solution getminduree(){
+		int n=this.pop.size();
+		Solution res=this.pop.get(0);
+		for(int i=1;i<n;i++){
+			if(this.pop.get(i).getDureetotal()<res.getDureetotal()){
+				res=this.pop.get(i);
+			}
+		}
+		return res;
+	}
+	
+	public Solution getmaxduree(){
+		int n=this.pop.size();
+		Solution res=this.pop.get(0);
+		for(int i=1;i<n;i++){
+			if(this.pop.get(i).getDureetotal()>res.getDureetotal()){
+				res=this.pop.get(i);
+			}
+		}
+		return res;
+	}
+	
+	public double getmoyenneduree(){
+		int n=this.pop.size();
+		double res=0;
+		for(int i=0;i<n;i++){
+			res+=this.pop.get(i).getDureetotal();
+		}
+		res=res/n;
+		return res;
+	}
+	
 	public void injectionnvsolutionramdom(Solution[] solutions){
 		int n = solutions.length ;
 		int tirage ;
