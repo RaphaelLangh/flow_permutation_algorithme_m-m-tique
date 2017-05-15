@@ -14,7 +14,7 @@ public class Test {
 	
 	
 	public static void main(String[] args) {
-	
+	/*
 	Job j0 = new Job(0,new int[]{2,8,4,7}) ;
 	Job j1 = new Job(1,new int[]{3,9,1,3}) ;
 	Job j2 = new Job(2,new int[]{6,8,3,4}) ;
@@ -53,6 +53,7 @@ public class Test {
 	
 	Flowshop f = new Flowshop("data/tai11.txt");
 	Population p = new Population(15,f);
+	System.out.println(p.getSolution(0).toString());
 	for ( Solution s : p.getPop()) {
 		s.rechercheLocale();
 	}

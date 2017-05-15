@@ -30,9 +30,10 @@ public class Population {
 	}
 	
 	public Population(int nbindividusouhaite,Flowshop instance){
-		Population popu = new Population(instance);
+		this.instance = instance ;
+		this.pop = new ArrayList<Solution>();
 		for(int i = 0 ; i < nbindividusouhaite ; i++){
-			popu.add(new Solution(instance));
+			this.add(new Solution(instance));
 		}
 		}
 
@@ -143,6 +144,7 @@ public class Population {
 			tirage2 = rand.nextInt(n);
 		}
 		Solution fils = this.getSolution(tirage1).croisement1pt(tirageK,this.getSolution(tirage2));
+		fils.rechercheLocale();
 		fils.mutation();
 		this.injectionnvsolutionduel(new Solution[]{fils});
 				
