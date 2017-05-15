@@ -156,11 +156,11 @@ public class Population {
 		Random rand = new Random();
 		int tirage1 = rand.nextInt(n);
 		int tirage2 = rand.nextInt(n);
-		int tirageK = rand.nextInt(this.getInstance().getNbJobs());
+		int tirageK = rand.nextInt(this.getInstance().getNbJobs()/2);
 		while(tirage2==tirage1){
 			tirage2 = rand.nextInt(n);
 		}
-		Solution fils = this.getSolution(tirage1).croisement1pt(tirageK,this.getSolution(tirage2));
+		Solution fils = this.getSolution(tirage1).croisement2pts(tirageK,this.getSolution(tirage2));
 		fils.rechercheLocale();
 		fils.mutation();
 		this.injectionnvsolutionduel(new Solution[]{fils});
@@ -172,6 +172,7 @@ public class Population {
 			for(int i = 0 ; i < nbindividusouhaite ; i++){
 				this.add(new Solution(instance));
 			}
+			this.recherchelocalepop();
 			this.injectionnvsolutionduel(new Solution[]{meilleur});
 			pop.sort(Solution.SolutionSort.SORTBYDUREECROISSANT);		
 		}

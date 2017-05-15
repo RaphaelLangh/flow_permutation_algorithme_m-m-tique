@@ -50,6 +50,7 @@ public class Test {
 	System.out.println(s4.toString());
 	System.out.println(s5.toString());
 	*/
+		/*
 	long debut=System.currentTimeMillis();
 	Flowshop f = new Flowshop("data/tai11.txt");
 	Population p = new Population(15,f);
@@ -57,8 +58,16 @@ public class Test {
 	for ( Solution s : p.getPop()) {
 		s.rechercheLocale();
 	}
-	while(System.currentTimeMillis()<debut+15000) {
+	*/
+	
+	Flowshop f = new Flowshop("data/tai52.txt");
+	long debut = System.currentTimeMillis() ;
+	
+	Population p = new Population(100,f);
+
+	while(System.currentTimeMillis()<debut+50000) {
 		p.next(0.90);
+
 	}
 	System.out.println(p.getmaxduree().getDureetotal());
 	System.out.println(p.getminduree().getDureetotal());
