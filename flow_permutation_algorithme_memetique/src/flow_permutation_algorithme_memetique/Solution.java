@@ -207,11 +207,11 @@ public class Solution {
 		int rd1 = rand1.nextInt(instance.getNbJobs());
 		Random rand2 = new Random();
 		int rd2 = rand2.nextInt(instance.getNbJobs());
-		if(rd1==rd2&&rd1!=instance.getNbJobs()){
-			rd2+=1;
-		}
-		else if(rd1==rd2&&rd1!=0){
+		if(rd1==rd2&&rd1==instance.getNbJobs()-1){
 			rd2-=1;
+		}
+		else if(rd1==rd2){
+			rd2+=1;
 		}
 		this.ordredesjobs[rd1]=this.ordredesjobs[rd2];
 		this.ordredesjobs[rd2]=precedent.ordredesjobs[rd1];
