@@ -49,6 +49,10 @@ public class Population {
 		this.instance = instance;
 	}
 	
+	public Solution getSolution(int i){
+		return this.getPop().get(i);
+	}
+	
 	public void add(Solution s){
 		this.pop.add(s) ;
 	}
@@ -73,6 +77,36 @@ public class Population {
 		for(int i = 0 ; i < n ; i++){
 			this.add(solutions[i]);
 		}
+	}
+	
+	public void injectionnvsolutionduel(Solution[] solutions){
+		int n = solutions.length ;
+		int tirage ;
+		for(int i = 0 ; i < n ; i++){
+			Random rand = new Random();
+			tirage = rand.nextInt(this.size());
+			if(solutions[i].getDureetotal()<this.getPop().get(tirage).getDureetotal()){
+				this.remove(tirage);
+				this.add(solutions[i]);
+			}
+		}
+	}
+	
+	
+	// avec croisement 1, injection avec duel et choix du parametre de croisement k aléatoire 
+	public void next(){
+		int n = this.getPop().size() ;
+		Random rand = new Random();
+		int tirage1 = rand.nextInt(n);
+		int tirage2 = rand.nextInt(n);
+		int tirageK = rand.nextInt(this.getInstance().getNbJobs());
+		while(tirage2==tirage1){
+			tirage2 = rand.nextInt(n);
+		}
+		Solution fils = this.getSolution(tirage1).croisement1pt(tirageK,this.getSolution(tirage2));
+		fils.mutation();
+		this.injectionnvsolutionduel(new Solution[]{fils});
+				
 	}
 	
 	
