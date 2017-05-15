@@ -11,7 +11,10 @@
 package flow_permutation_algorithme_memetique;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
+
+
 
 public class Solution {
 
@@ -217,5 +220,23 @@ public class Solution {
 		this.ordredesjobs[rd2]=precedent.ordredesjobs[rd1];
 		this.setDureetotal();
 	}
+	
+	public static class SolutionSort {
+		   public static final Comparator<Solution> SORTBYDUREECROISSANT = 
+		                                        new Comparator<Solution>() {
+		            public int compare(Solution e1, Solution e2) {
+		                if(e1.getDureetotal()<e2.getDureetotal()){
+		                	return -1 ;
+		                }
+		                else if(e2.getDureetotal()<e1.getDureetotal()){
+		                	return 1 ;
+		                }
+		                else{
+		                	return 0 ;
+		                }
+		            		
+		            }
+		            };
+		}
 	
 }

@@ -57,11 +57,13 @@ public class Test {
 	for ( Solution s : p.getPop()) {
 		s.rechercheLocale();
 	}
-	for (int i= 0; i<1000; i++) {
-		p.next();
+	for (int i= 0; i<100000; i++) {
+		p.next(0.80);
 	}
-	System.out.println();
-	System.out.println(p);
+	System.out.println(p.getmaxduree().getDureetotal());
+	System.out.println(p.getminduree().getDureetotal());
+	System.out.println(p.getmoyenneduree());
+	System.out.println(p.getNbréinit());
 	
 	}
 

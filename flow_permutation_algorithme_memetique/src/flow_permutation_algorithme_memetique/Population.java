@@ -16,17 +16,20 @@ import java.util.Random;
 public class Population {
 	
 	private ArrayList<Solution> pop;
-	private Flowshop instance ; 
+	private Flowshop instance ;
+	private int nbréinit;
 	
 	
 	public Population(Flowshop instance){
 		this.pop = new ArrayList<Solution>() ;
 		this.instance = instance ;
+		this.nbréinit = 0 ;
 	}
 
 	public Population(ArrayList<Solution> pop,Flowshop instance){
 		this.pop = pop ;
 		this.instance = instance ;
+		this.nbréinit = 0 ;
 	}
 	
 	public Population(int nbindividusouhaite,Flowshop instance){
@@ -35,7 +38,17 @@ public class Population {
 		for(int i = 0 ; i < nbindividusouhaite ; i++){
 			this.add(new Solution(instance));
 		}
+		pop.sort(Solution.SolutionSort.SORTBYDUREECROISSANT);
+		this.nbréinit = 0 ;
 		}
+	
+	
+	public int getNbréinit() {
+		return nbréinit;
+	}
+	public void setNbréinit(int nbréinit) {
+		this.nbréinit = nbréinit;
+	}
 
 	public ArrayList<Solution> getPop() {
 		return pop;
@@ -127,14 +140,18 @@ public class Population {
 			tirage = rand.nextInt(this.size());
 			if(solutions[i].getDureetotal()<this.getPop().get(tirage).getDureetotal()){
 				this.remove(tirage);
-				this.add(solutions[i]);
+				int j = 0 ;
+				while(j<n&&this.getSolution(j).getDureetotal()<solutions[i].getDureetotal()){
+					j++;
+				}
+				this.getPop().add(j,solutions[i]);
 			}
 		}
 	}
 	
 	
 	// avec croisement 1, injection avec duel et choix du parametre de croisement k aléatoire 
-	public void next(){
+	public void next(double propreinit){
 		int n = this.getPop().size() ;
 		Random rand = new Random();
 		int tirage1 = rand.nextInt(n);
@@ -147,6 +164,17 @@ public class Population {
 		fils.rechercheLocale();
 		fils.mutation();
 		this.injectionnvsolutionduel(new Solution[]{fils});
+		if(this.getSolution(0).getDureetotal()==this.getSolution((int) (n*propreinit)).getDureetotal()){
+			this.nbréinit++;
+			Solution meilleur = this.getSolution(0);
+			int nbindividusouhaite = this.size();
+			this.pop = new ArrayList<Solution>();
+			for(int i = 0 ; i < nbindividusouhaite ; i++){
+				this.add(new Solution(instance));
+			}
+			this.injectionnvsolutionduel(new Solution[]{meilleur});
+			pop.sort(Solution.SolutionSort.SORTBYDUREECROISSANT);		
+		}
 				
 	}
 	
